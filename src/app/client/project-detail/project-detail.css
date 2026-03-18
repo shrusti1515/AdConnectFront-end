@@ -1,0 +1,197 @@
+.container{
+max-width:900px;
+margin:auto;
+padding:20px;
+}
+
+.title{
+display:flex;
+justify-content:space-between;
+align-items:center;
+}
+
+.card{
+background:white;
+padding:20px;
+border-radius:10px;
+margin-bottom:20px;
+box-shadow:0 2px 8px rgba(0,0,0,0.1);
+}
+
+.status-badge{
+padding:5px 12px;
+border-radius:20px;
+color:white;
+font-size:12px;
+}
+
+.pending{background:#6b7280;}
+.negotiating{background:#2563eb;}
+.finalized{background:#7c3aed;}
+.paymentdone{background:#f59e0b;}
+.inprogress{background:#0ea5e9;}
+.completed{background:#16a34a;}
+.closed{background:#111827;}
+
+.chat{
+margin-bottom:15px;
+}
+
+.msg{
+padding:10px;
+border-radius:8px;
+margin-bottom:12px;
+max-width:70%;
+}
+
+.client{
+background:#2563eb;
+color:white;
+width:fit-content;
+/* margin-left:auto; */
+}
+
+
+.admaker{
+background:#e5e7eb;
+}
+
+button{
+margin-top:10px;
+padding:8px 14px;
+border:none;
+border-radius:6px;
+cursor:pointer;
+}
+
+.primary{background:#2563eb;color:white;}
+.success{background:#16a34a;color:white;}
+.pay{background:#f59e0b;color:white;}
+
+.stars span{
+font-size:28px;
+cursor:pointer;
+color:#d1d5db;
+}
+
+.stars span.active{
+color:#fbbf24;
+}
+
+.danger{
+    background: #dc2626;
+    color: white;
+}
+
+
+/* Negotiation Layout */
+
+.negotiation-box{
+margin-top:15px;
+display:flex;
+flex-direction:column;
+}
+
+.negotiation-box input{
+width:100%;
+box-sizing:border-box;
+margin-bottom:12px;
+padding:10px;
+border-radius:6px;
+border:1px solid #ddd;
+}
+
+.start-btn{
+margin-top:8px;
+width:160px;
+}
+
+/* Send button */
+
+.send-btn{
+background:#0ea5e9;
+color:white;
+padding:10px;
+border:none;
+border-radius:6px;
+cursor:pointer;
+margin-bottom:18px;
+width: 160px;
+}
+
+/* Finalize button */
+
+.finalize-btn{
+background:#16a34a;
+color:white;
+padding:12px;
+border:none;
+border-radius:6px;
+cursor:pointer;
+width: 160px;
+}
+
+/* hover effects */
+
+.send-btn:hover{
+background:#0284c7;
+}
+
+.finalize-btn:hover{
+background:#15803d;
+}
+
+.review-card{
+margin-top:20px;
+}
+
+.rating-box{
+margin-bottom:15px;
+}
+
+.star{
+font-size:30px;
+cursor:pointer;
+color:#d1d5db;
+margin-right:6px;
+transition:0.2s;
+}
+
+.star:hover{
+transform:scale(1.2);
+}
+
+.star.active{
+color:#fbbf24;
+}
+
+.comment-box{
+width:100%;
+box-sizing:border-box;
+padding:12px;
+border-radius:8px;
+border:1px solid #ddd;
+margin-bottom:15px;
+resize:none;
+min-height:90px;
+}
+
+.review-btn{
+background:#2563eb;
+color:white;
+padding:10px 18px;
+border:none;
+border-radius:6px;
+cursor:pointer;
+font-weight:500;
+}
+
+.review-btn:hover{
+background:#1d4ed8;
+}
+
+.success{
+margin-top:10px;
+color:#16a34a;
+font-size:14px;
+}

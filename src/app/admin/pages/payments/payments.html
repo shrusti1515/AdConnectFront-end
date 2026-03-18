@@ -1,0 +1,153 @@
+<div class="projects-container">
+
+<h2>
+<i class="fa-solid fa-credit-card"></i>
+Payments Monitor
+</h2>
+
+<!-- 🔥 SUMMARY CARDS (UNCHANGED) -->
+
+<div class="summary-cards">
+
+<div class="card">
+<i class="fa-solid fa-folder card-icon"></i>
+<h4>Total Projects</h4>
+<p>{{summary?.totalProjects || 0}}</p>
+</div>
+
+<div class="card">
+<i class="fa-solid fa-diagram-project card-icon"></i>
+<h4>Active Projects</h4>
+<p>{{summary?.activeProjects || 0}}</p>
+</div>
+
+<div class="card revenue">
+<i class="fa-solid fa-indian-rupee-sign card-icon"></i>
+<h4>Total Revenue</h4>
+<p>₹{{summary?.totalRevenue || 0}}</p>
+</div>
+
+<div class="card pending">
+<i class="fa-solid fa-hourglass-half card-icon"></i>
+<h4>Pending Payments</h4>
+<p>{{summary?.pendingPayments || 0}}</p>
+</div>
+
+</div>
+
+<!-- 🔹 FILTER BAR -->
+
+<div class="filter-bar">
+
+<div class="filter-item">
+
+<label>
+<i class="fa-solid fa-filter"></i>
+Status
+</label>
+
+<select [(ngModel)]="filters.status">
+<option value="">All</option>
+<option value="Paid">Paid</option>
+<option value="Pending">Pending</option>
+<option value="Failed">Failed</option>
+</select>
+
+</div>
+
+<div class="filter-item">
+
+<label>
+<i class="fa-solid fa-wallet"></i>
+Method
+</label>
+
+<select [(ngModel)]="filters.method">
+<option value="">All</option>
+<option value="UPI">UPI</option>
+<option value="Card">Card</option>
+<option value="NetBanking">NetBanking</option>
+</select>
+
+</div>
+
+<button class="filter-btn" (click)="loadPayments()">
+<i class="fa-solid fa-magnifying-glass"></i>
+Apply Filter
+</button>
+
+</div>
+
+<!-- 🔹 TABLE -->
+
+<div *ngIf="loading">Loading...</div>
+
+<table *ngIf="!loading && payments.length">
+
+<thead>
+
+<tr>
+
+<th><i class="fa-solid fa-hashtag"></i> ID</th>
+
+<th><i class="fa-solid fa-folder"></i> Project</th>
+
+<th><i class="fa-solid fa-indian-rupee-sign"></i> Amount</th>
+
+<th><i class="fa-solid fa-wallet"></i> Method</th>
+
+<th><i class="fa-solid fa-chart-line"></i> Status</th>
+
+<th width="220">
+<i class="fa-solid fa-gear"></i>
+Update Status
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+
+<tr *ngFor="let p of payments">
+
+<td>{{p.id}}</td>
+
+<td>{{p.projectTitle}}</td>
+
+<td>₹{{p.amount}}</td>
+
+<td>{{p.method}}</td>
+
+<td>
+<span class="status">
+{{p.status}}
+</span>
+</td>
+
+<td>
+
+<select #statusSelect
+(change)="updateStatus(p.id,statusSelect.value)"
+class="status-select">
+
+<option value="">🔄 Change</option>
+<option value="Paid">✔ Paid</option>
+<option value="Pending">⏳ Pending</option>
+<option value="Failed">❌ Failed</option>
+
+</select>
+
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+
+<div *ngIf="!loading && !payments.length">
+No payments found.
+</div>
+
+</div>

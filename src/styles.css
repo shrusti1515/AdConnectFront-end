@@ -1,0 +1,37 @@
+body {
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  overflow: hidden;
+}
+
+/* Blurred background image layer */
+/* body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background: url("https://images.unsplash.com/photo-1557804506-669a67965ba0") center/cover no-repeat;
+  filter: blur(4px);
+  z-index: -1;
+} */
+
+.primary-btn{
+  background:linear-gradient(135deg,#00b4db,#0083b0);
+  border:none;
+  padding:10px 18px;
+  border-radius:10px;
+  color:white;
+  cursor:pointer;
+  font-weight:500;
+  transition:.2s;
+}
+
+.primary-btn:hover{
+  transform:scale(1.05);
+}
+
+.page-title{
+  font-size:22px;
+  font-weight:600;
+  margin-bottom:20px;
+  color:#1f2937;
+}

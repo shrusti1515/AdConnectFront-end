@@ -1,0 +1,81 @@
+<div class="browse-container">
+
+  <h2>Browse Admakers</h2>
+
+  <!-- Filters -->
+  <div class="filters">
+
+    <input
+      type="text"
+      placeholder="Service (Banner Maker, Video Ads)"
+      [(ngModel)]="filters.service"
+    />
+
+    <input
+      type="number"
+      placeholder="Min Budget"
+      [(ngModel)]="filters.minBudget"
+    />
+
+    <input
+      type="number"
+      placeholder="Max Budget"
+      [(ngModel)]="filters.maxBudget"
+    />
+
+    <input
+      type="number"
+      placeholder="Min Rating"
+      [(ngModel)]="filters.minRating"
+    />
+
+    <input
+      type="number"
+      placeholder="Experience"
+      [(ngModel)]="filters.minExperience"
+    />
+
+    <button (click)="search()">Search</button>
+
+  </div>
+
+  <!-- Cards -->
+  <div class="admakers-grid">
+
+    <div class="card" *ngFor="let admaker of admakers">
+
+      <div class="portfolio-image">
+
+  <img
+    [src]="admaker.portfolioImage 
+          ? 'https://localhost:7265/' + admaker.portfolioImage 
+          : 'https://localhost:7265/uploads/default-portfolio.jpg'"
+    (error)="handleImageError($event)"
+  >
+
+</div>
+      
+
+      <h3>{{admaker.name}}</h3>
+
+      <p><b>Service:</b> {{admaker.skillsServices}}</p>
+
+      <p><b>Experience:</b> {{admaker.experience}} years</p>
+
+      <p><b>Rating:</b> ⭐ {{admaker.rating}}</p>
+
+      <p><b>Price:</b> ₹ {{admaker.price || 'Not Set'}}</p>
+
+      <p class="status">
+        {{admaker.verificationStatus}}
+      </p>
+
+      <button (click)="viewProfile(admaker)">
+View Profile
+</button>
+
+    </div>
+
+  </div>
+
+</div>

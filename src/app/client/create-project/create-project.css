@@ -1,0 +1,63 @@
+.project-container{
+
+max-width:600px;
+margin:auto;
+padding:40px;
+
+}
+
+.project-container h2{
+
+margin-bottom:20px;
+text-align:center;
+
+}
+
+.form{
+
+display:flex;
+flex-direction:column;
+gap:15px;
+
+}
+
+.form input,
+.form textarea{
+
+padding:12px;
+border-radius:8px;
+border:1px solid #ddd;
+font-size:14px;
+
+}
+
+.form textarea{
+
+height:120px;
+resize:none;
+
+}
+
+.form button{
+
+padding:12px;
+border:none;
+background:#2563eb;
+color:white;
+border-radius:8px;
+font-weight:600;
+cursor:pointer;
+
+}
+
+.form button:hover{
+
+background:#1d4ed8;
+
+}
+
+.success{
+margin-top:10px;
+color:#16a34a;
+font-size:14px;
+}

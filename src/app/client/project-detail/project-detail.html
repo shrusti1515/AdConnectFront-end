@@ -1,0 +1,199 @@
+<div class="container" *ngIf="project">
+
+<h2 class="title">
+{{project.title}}
+
+<span class="status-badge"
+[ngClass]="project.status.toLowerCase()">
+{{project.status}}
+</span>
+
+</h2>
+
+<!-- PROJECT INFO -->
+
+<div class="card">
+
+<h3>Project Info</h3>
+
+<p><b>Description:</b> {{project.description}}</p>
+
+<p><b>Budget:</b> ₹{{project.budget}}</p>
+
+<p>
+<b>Reference:</b>
+<a [href]="project.referenceLink" target="_blank">
+View Reference
+</a>
+</p>
+
+</div>
+
+<!-- ADMAKER -->
+
+<div class="card">
+
+<h3>Admaker Details</h3>
+
+<p><b>Name:</b> {{project.admaker?.name}}</p>
+<p><b>Skills:</b> {{project.admaker?.skills}}</p>
+<p><b>Experience:</b> {{project.admaker?.experience}} years</p>
+<p><b>Rating:</b> ⭐ {{project.admaker?.rating}}</p>
+
+</div>
+
+<!-- NEGOTIATION -->
+
+<div class="card">
+
+<h3>Negotiation</h3>
+
+<div class="chat">
+
+<div class="msg client"
+*ngIf="project.negotiation?.clientMessage">
+
+Client: {{project.negotiation.clientMessage}}
+
+</div>
+
+<div class="msg admaker"
+*ngIf="project.negotiation?.admakerMessage">
+
+Admaker: {{project.negotiation.admakerMessage}}
+
+</div>
+
+</div>
+
+<div *ngIf="project.status=='Pending'" class="negotiation-box">
+
+<input
+[(ngModel)]="offerMessage"
+placeholder="Enter offer message">
+
+<button
+class="primary start-btn"
+(click)="startNegotiation()">
+Start Negotiation
+</button>
+
+</div>
+
+
+
+
+
+
+
+
+<div *ngIf="project.status=='Negotiating'" class="negotiation-box">
+
+<input
+[(ngModel)]="counterMessage"
+placeholder="Reply message">
+
+<button
+class="send-btn"
+(click)="sendCounter()">
+Send
+</button>
+
+<input
+type="number"
+[(ngModel)]="finalAmount"
+placeholder="Enter final amount">
+
+<button
+class="finalize-btn"
+(click)="finalizeDeal()">
+Finalize Deal
+</button>
+
+</div>
+
+</div>
+
+<!-- PAYMENT -->
+
+
+<div class="card"
+*ngIf="project.status=='Finalized'">
+
+<h3>Payment</h3>
+
+
+
+<!-- <p>
+Final Amount:
+<b>₹{{project.negotiation?.finalAmount}}</b>
+</p>
+
+<select [(ngModel)]="paymentMethod">
+
+<option>UPI</option>
+<option>CreditCard</option>
+<option>NetBanking</option>
+
+</select> -->
+
+<button class="pay"
+(click)="goToPayment()">
+Pay Now
+</button>
+
+
+</div>
+
+
+
+<div *ngIf="project.status=='Completed'" class="card">
+<h3>Project Completed</h3>
+<button class="danger" (click)="closeProject()">
+Close Project
+</button>
+
+</div>
+
+
+
+
+<!-- REVIEW -->
+
+<div class="card"
+*ngIf="project.status=='Closed'">
+
+<h3>Review Admaker</h3>
+
+<div class="rating-box">
+
+<span
+class="star"
+*ngFor="let star of [1,2,3,4,5]"
+(click)="rating=star"
+[ngClass]="{'active':star<=rating}">
+★
+</span>
+
+</div>
+
+
+
+<textarea
+[(ngModel)]="reviewText"
+placeholder="Write your feedback about the admaker..."
+class="comment-box">
+</textarea>
+
+<button
+class="review-btn"
+(click)="submitReview()">
+Submit Review
+</button>
+
+</div>
+
+
+
+
+</div>

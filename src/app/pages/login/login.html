@@ -1,0 +1,77 @@
+<div class="auth-wrapper">
+
+  <div class="auth-card">
+
+    <h1 class="brand">
+      <span class="logo-icon">AC</span>
+      AdConnect
+    </h1>
+
+    <p class="subtitle">Welcome back! Please login to continue</p>
+
+    <!-- EMAIL -->
+    <div class="input-group">
+      <input #email type="email" placeholder="Email">
+      <div class="error" *ngIf="errors.email">{{ errors.email }}</div>
+    </div>
+
+    <!-- PASSWORD -->
+<div class="input-group password-group">
+
+  <input
+    #password
+    [type]="showPassword ? 'text' : 'password'"
+    placeholder="Password"
+  >
+
+  <i
+    class="fa-solid"
+    [class.fa-eye]="showPassword"
+    [class.fa-eye-slash]="!showPassword"
+    (click)="togglePassword()"
+  ></i>
+
+</div>
+
+<div class="error" *ngIf="errors.password">
+  {{ errors.password }}
+</div>
+
+    <!-- LOGIN BUTTON -->
+    <button
+      class="primary-btn login-btn"
+      (click)="login(email.value,password.value)"
+      [disabled]="loading"
+    >
+      {{ loading ? 'Logging in...' : 'Login' }}
+    </button>
+
+    <!-- ERROR -->
+    <div class="error" *ngIf="errorMessage">
+      {{ errorMessage }}
+    </div>
+
+    <!-- SUCCESS -->
+    <div class="success" *ngIf="successMessage">
+      {{ successMessage }}
+    </div>
+
+    <!-- REGISTER LINK -->
+    <p class="switch">
+      Don't have an account?
+      <a routerLink="/register">Register</a>
+    </p>
+
+    <div class="divider"></div>
+
+    <div class="footer">
+      <p class="tagline">
+        Connecting Admakers with Perfect Opportunities
+      </p>
+
+      <small>© 2026 AdConnect. All rights reserved.</small>
+    </div>
+
+  </div>
+
+</div>

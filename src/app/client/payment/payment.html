@@ -1,0 +1,49 @@
+<div class="payment-container" *ngIf="project">
+
+<h2>Secure Payment</h2>
+
+<div class="payment-card">
+
+<h3>{{project.title}}</h3>
+
+<p><b>Client:</b> {{clientName}}</p>
+
+
+<p class="amount">
+Amount: ₹{{project.negotiation?.finalAmount}}
+</p>
+
+<label>Payment Method</label>
+
+
+
+
+<select [(ngModel)]="method">
+<option>Card</option>
+<option>UPI</option>
+<option>NetBanking</option>
+</select>
+
+<div *ngIf="method=='Card'" class="card-form">
+
+<input
+placeholder="Card Number"
+[(ngModel)]="cardNumber">
+
+<input
+placeholder="Expiry MM/YY"
+[(ngModel)]="expiry">
+
+<input
+placeholder="CVV"
+[(ngModel)]="cvv">
+
+</div>
+
+<button class="pay-btn" (click)="pay()">
+Pay ₹{{project.negotiation?.finalAmount}}
+</button>
+
+</div>
+
+</div>

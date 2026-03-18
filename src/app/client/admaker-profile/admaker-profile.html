@@ -1,0 +1,118 @@
+<!-- <div class="profile-wrapper" *ngIf="admaker">
+
+  <div class="profile-card">
+
+    <div class="profile-left">
+
+      <img 
+      class="profile-img"
+      [src]="admaker.portfolio && admaker.portfolio.length 
+      ? 'https://localhost:7265/' + admaker.portfolio[0] 
+      : 'https://localhost:7265/uploads/default-portfolio.jpg'">
+
+    </div>
+
+    <div class="profile-right">
+
+      <h2>{{ admaker.name }}</h2>
+
+      <p class="skill">{{ admaker.skillsServices }}</p>
+
+      <div class="info">
+
+        <span>{{ admaker.rating }} ⭐</span>
+        <span>{{ admaker.experience }} Years Experience</span>
+        <span class="price">₹ {{ admaker.price }}</span>
+
+      </div>
+
+      <button class="hire-btn" (click)="hireAdmaker()">
+        Hire Admaker
+      </button>
+
+    </div>
+
+  </div>
+
+  <div class="portfolio-section">
+
+    <h3>Portfolio</h3>
+
+    <div class="portfolio-grid">
+
+      <img
+      *ngFor="let img of admaker.portfolio"
+      [src]="'https://localhost:7265/' + img">
+
+    </div>
+
+  </div>
+
+</div>
+
+
+
+ -->
+
+ <!-- Loading state -->
+<div *ngIf="isLoading" class="loading-container">
+  <p>Loading admaker profile...</p>
+</div>
+
+<!-- Error state -->
+<div *ngIf="errorMessage && !isLoading" class="error-container">
+  <p class="error">{{ errorMessage }}</p>
+</div>
+
+<!-- Content state -->
+<div *ngIf="!isLoading && admaker" class="profile-wrapper">
+
+  <div class="profile-card">
+
+    <div class="profile-left">
+
+      <img 
+      class="profile-img"
+      [src]="admaker.portfolio && admaker.portfolio.length 
+      ? 'https://localhost:7265/' + admaker.portfolio[0] 
+      : 'https://localhost:7265/uploads/default-portfolio.jpg'">
+
+    </div>
+
+    <div class="profile-right">
+
+      <h2>{{ admaker.name }}</h2>
+
+      <p class="skill">{{ admaker.skillsServices }}</p>
+
+      <div class="info">
+
+        <span>{{ admaker.rating }} ⭐</span>
+        <span>{{ admaker.experience }} Years Experience</span>
+        <span class="price">₹ {{ admaker.price }}</span>
+
+      </div>
+
+      <button class="hire-btn" (click)="hireAdmaker()">
+        Hire Admaker
+      </button>
+
+    </div>
+
+  </div>
+
+  <div class="portfolio-section">
+
+    <h3>Portfolio</h3>
+
+    <div class="portfolio-grid">
+
+      <img
+      *ngFor="let img of admaker.portfolio"
+      [src]="'https://localhost:7265/' + img">
+
+    </div>
+
+  </div>
+
+</div>

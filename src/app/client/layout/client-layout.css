@@ -1,0 +1,34 @@
+.client-container {
+  display: flex;
+  height: 100vh;
+  background: linear-gradient(135deg, #eef2ff, #f8fafc);
+  font-family: 'Segoe UI', sans-serif;
+}
+
+/* Sidebar */
+client-sidebar {
+  width: 240px;
+  background: #ffffff;
+  box-shadow: 4px 0 20px rgba(0, 0, 0, 0.05);
+}
+
+/* Main Section */
+.main-section {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Navbar */
+client-navbar {
+  height: 70px;
+  background: #ffffff;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+}
+
+/* Content */
+.content {
+  flex: 1;
+  padding: 30px;
+  overflow-y: auto;
+}

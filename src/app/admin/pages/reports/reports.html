@@ -1,0 +1,163 @@
+<div class="projects-container">
+
+<h2><i class="fa-solid fa-chart-line"></i> Reports Monitor</h2>
+
+<!-- 🔥 SUMMARY CARDS -->
+<div class="stats">
+
+  <div class="card">
+    <i class="fa-solid fa-users"></i>
+    <h3>{{summary.totalUsers || 0}}</h3>
+    <p>Total Users</p>
+  </div>
+
+  <div class="card">
+    <i class="fa-solid fa-folder"></i>
+    <h3>{{summary.totalProjects || 0}}</h3>
+    <p>Total Projects</p>
+  </div>
+
+  <div class="card close">
+    <i class="fa-solid fa-check"></i>
+    <h3>{{summary.closedProjects || 0}}</h3>
+    <p>Closed Projects</p>
+  </div>
+
+  <div class="card revenue">
+    <i class="fa-solid fa-indian-rupee-sign"></i>
+    <h3>₹{{summary.totalRevenue || 0}}</h3>
+    <p>Total Revenue</p>
+  </div>
+
+</div>
+
+<!-- 🔘 TABS -->
+<div class="filter-bar">
+
+<button class="filter-userbtn" (click)="changeTab('users')">Users</button>
+<button class="filter-prbtn" (click)="changeTab('projects')">Projects</button>
+<button class="filter-paybtn" (click)="changeTab('payments')">Payments</button>
+
+</div>
+
+<!-- 🔍 FILTER BAR (MATCHED STYLE) -->
+<div class="filter-bar">
+
+  <div class="filter-item" *ngIf="activeTab==='users'">
+    <label><i class="fa-solid fa-user-tag"></i> Role</label>
+    <select [(ngModel)]="filters.role">
+      <option value="">All</option>
+      <option value="Client">Client</option>
+      <option value="Admaker">Admaker</option>
+      <option value="Admin">Admin</option>
+    </select>
+  </div>
+
+  <div class="filter-item">
+    <label><i class="fa-solid fa-filter"></i> Status</label>
+    <select [(ngModel)]="filters.status">
+      <option value="">All</option>
+       <option>Active</option>
+      <option>Inactive</option>
+      <option>Pending</option>
+      <option>Negotiating</option>
+      <option>Inprogress</option>
+      <option>Completed</option>
+      <option>Closed</option>
+      <option>Paid</option>
+    </select>
+  </div>
+
+  <div class="filter-item" *ngIf="activeTab!=='users'">
+    <label><i class="fa-solid fa-indian-rupee-sign"></i> Min</label>
+    <input type="number" [(ngModel)]="filters.minAmount">
+  </div>
+
+  <div class="filter-item" *ngIf="activeTab!=='users'">
+    <label><i class="fa-solid fa-indian-rupee-sign"></i> Max</label>
+    <input type="number" [(ngModel)]="filters.maxAmount">
+  </div>
+
+  <button class="filter-btn" (click)="loadReport()">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    Apply Filter
+  </button>
+
+</div>
+
+<!-- ⏳ Loading -->
+<div *ngIf="loading">Loading...</div>
+
+<!-- 📋 TABLE -->
+<table *ngIf="!loading && data.length">
+
+<thead>
+
+<tr *ngIf="activeTab==='users'">
+  <th><i class="fa-solid fa-hashtag"></i> ID</th>
+  <th><i class="fa-solid fa-user"></i> Name</th>
+  <th><i class="fa-solid fa-envelope"></i> Email</th>
+  <th><i class="fa-solid fa-user-tag"></i> Role</th>
+  <th><i class="fa-solid fa-chart-line"></i> Status</th>
+</tr>
+
+<tr *ngIf="activeTab==='projects'">
+<th><i class="fa-solid fa-hashtag"></i> ID</th>
+<th><i class="fa-solid fa-folder"></i> Title</th>
+<th><i class="fa-solid fa-user"></i> Client</th>
+<th><i class="fa-solid fa-user-tie"></i> Admaker</th>
+<th><i class="fa-solid fa-chart-line"></i> Status</th>
+<th><i class="fa-solid fa-indian-rupee-sign"></i> Budget</th>
+</tr>
+
+<tr *ngIf="activeTab==='payments'">
+<th><i class="fa-solid fa-hashtag"></i> ID</th>
+<th><i class="fa-solid fa-folder"></i> Project</th>
+<th><i class="fa-solid fa-indian-rupee-sign"></i> Amount</th>
+<th><i class="fa-solid fa-credit-card"></i> Method</th>
+<th><i class="fa-solid fa-chart-line"></i> Status</th>
+</tr>
+
+
+</thead>
+
+<tbody>
+
+<tr *ngFor="let d of data">
+
+  <ng-container *ngIf="activeTab==='users'">
+    <td>{{d.id}}</td>
+    <td>{{d.name}}</td>
+    <td>{{d.email}}</td>
+    <td>{{d.role}}</td>
+    <td><span class="status">{{d.status}}</span></td>
+  </ng-container>
+
+  <ng-container *ngIf="activeTab==='projects'">
+    <td>{{d.id}}</td>
+    <td>{{d.title}}</td>
+    <td>{{d.client}}</td>
+    <td>{{d.admaker}}</td>
+    <td><span class="status">{{d.status}}</span></td>
+    <td>₹{{d.budget}}</td>
+  </ng-container>
+
+  <ng-container *ngIf="activeTab==='payments'">
+    <td>{{d.id}}</td>
+    <td>{{d.projectTitle}}</td>
+    <td>₹{{d.amount}}</td>
+    <td>{{d.method}}</td>
+    <td><span class="status">{{d.status}}</span></td>
+  </ng-container>
+
+</tr>
+
+</tbody>
+
+</table>
+
+<div *ngIf="!loading && !data.length">
+No records found.
+</div>
+
+</div>

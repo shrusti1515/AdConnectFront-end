@@ -1,0 +1,49 @@
+<div class="users-container">
+
+  <h2>Users Management</h2>
+
+  <div *ngIf="loading">Loading...</div>
+
+  <table *ngIf="!loading && users.length">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Role</th>
+        <th>Status</th>
+        <th width="220">Actions</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <tr *ngFor="let user of users">
+        <td>{{ user.name }}</td>
+        <td>{{ user.email }}</td>
+        <td>{{ user.role }}</td>
+        <td>
+          <span [ngClass]="user.status === 'Active' ? 'active' : 'inactive'">
+            {{ user.status }}
+          </span>
+        </td>
+        <td>
+          <button *ngIf="user.status === 'Inactive'" (click)="activate(user.id)">
+            Activate
+          </button>
+
+          <button *ngIf="user.status === 'Active'" (click)="deactivate(user.id)">
+            Deactivate
+          </button>
+
+          <button class="delete" (click)="delete(user.id)">
+            Delete
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div *ngIf="!loading && !users.length">
+    No users found.
+  </div>
+
+</div>

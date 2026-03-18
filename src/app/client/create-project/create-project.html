@@ -1,0 +1,37 @@
+<div class="project-container">
+
+<h2>Create Project</h2>
+
+<div class="success" *ngIf="successMessage">
+  {{ successMessage }}
+</div>
+
+<div class="form">
+
+<input
+type="text"
+placeholder="Project Title"
+[(ngModel)]="project.title">
+
+<textarea
+placeholder="Project Description"
+[(ngModel)]="project.description">
+</textarea>
+
+<input
+type="number"
+placeholder="Budget"
+[(ngModel)]="project.budget">
+
+<input
+type="text"
+placeholder="Reference Link (optional)"
+[(ngModel)]="project.referenceLink">
+
+<button (click)="createProject()">
+Create Project
+</button>
+
+</div>
+
+</div>

@@ -1,0 +1,164 @@
+<!-- <div class="monitor-page">
+
+<h2>Platform Monitor</h2> -->
+
+<!-- SUMMARY CARDS -->
+<!-- 
+<div class="cards">
+
+<div class="card">
+<h3>Total Projects</h3>
+<p>{{ summary?.totalProjects }}</p>
+</div>
+
+<div class="card">
+<h3>Active Projects</h3>
+<p>{{ summary?.activeProjects }}</p>
+</div>
+
+<div class="card">
+<h3>Total Revenue</h3>
+<p>₹{{ summary?.totalRevenue }}</p>
+</div>
+
+<div class="card">
+<h3>Pending Payments</h3>
+<p>{{ summary?.pendingPayments }}</p>
+</div>
+
+</div> -->
+
+<!-- PROJECTS -->
+
+<!-- <div class="section">
+
+<h3>Projects</h3>
+
+<div class="filters">
+
+<button (click)="filterProjects('')">All</button>
+<button (click)="filterProjects('Pending')">Pending</button>
+<button (click)="filterProjects('Active')">Active</button>
+<button (click)="filterProjects('Completed')">Completed</button>
+
+</div>
+
+<table class="table">
+
+<thead>
+<tr>
+<th>Title</th>
+<th>Client</th>
+<th>Admaker</th>
+<th>Budget</th>
+<th>Status</th>
+<th>Action</th>
+</tr>
+</thead>
+
+<tbody>
+
+<tr *ngFor="let p of projects">
+
+<td>{{ p.title }}</td>
+<td>{{ p.client }}</td>
+<td>{{ p.admaker }}</td>
+<td>₹{{ p.budget }}</td>
+
+<td>
+
+<span class="badge pending" *ngIf="p.status=='Pending'">Pending</span>
+<span class="badge active" *ngIf="p.status=='Active'">Active</span>
+<span class="badge completed" *ngIf="p.status=='Completed'">Completed</span>
+
+</td>
+
+<td>
+
+<button class="btn-active"
+(click)="changeProjectStatus(p,'Active')">
+Activate
+</button>
+
+<button class="btn-complete"
+(click)="changeProjectStatus(p,'Completed')">
+Complete
+</button>
+
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+
+</div> -->
+
+
+<!-- PAYMENTS -->
+
+<!-- <div class="section">
+
+<h3>Payments</h3>
+
+<div class="filters">
+
+<button (click)="filterPayments('')">All</button>
+<button (click)="filterPayments('Pending')">Pending</button>
+<button (click)="filterPayments('Paid')">Paid</button>
+<button (click)="filterPayments('Failed')">Failed</button>
+
+</div>
+
+<table class="table">
+
+<thead>
+<tr>
+<th>Project</th>
+<th>Amount</th>
+<th>Method</th>
+<th>Status</th>
+<th>Action</th>
+</tr>
+</thead>
+
+<tbody>
+
+<tr *ngFor="let p of payments">
+
+<td>{{ p.projectTitle }}</td>
+<td>₹{{ p.amount }}</td>
+<td>{{ p.method }}</td>
+
+<td>
+
+<span class="badge pending" *ngIf="p.status=='Pending'">Pending</span>
+<span class="badge paid" *ngIf="p.status=='Paid'">Paid</span>
+<span class="badge failed" *ngIf="p.status=='Failed'">Failed</span>
+
+</td>
+
+<td>
+
+<button class="btn-success"
+(click)="changePaymentStatus(p,'Paid')">
+Mark Paid
+</button>
+
+<button class="btn-danger"
+(click)="changePaymentStatus(p,'Failed')">
+Fail
+</button>
+
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+
+</div>
+
+</div> -->

@@ -1,0 +1,57 @@
+<div class="projects-container">
+
+<h2>My Projects</h2>
+
+<div class="tabs">
+
+<button
+[class.active]="activeTab==='Pending'"
+(click)="filterProjects('Pending')">
+Pending
+</button>
+
+<button
+[class.active]="activeTab==='Active'"
+(click)="filterProjects('Active')">
+Active Deals
+</button>
+
+<button
+[class.active]="activeTab==='Completed'"
+(click)="filterProjects('Completed')">
+Completed
+</button>
+
+</div>
+
+
+<div class="projects-grid">
+
+<div class="project-card" *ngFor="let project of filteredProjects">
+
+<h3>{{project.title}}</h3>
+
+<p><b>Admaker:</b> {{project.admakerName}}</p>
+
+<p><b>Skills:</b> {{project.admakerSkills}}</p>
+
+<p><b>Budget:</b> ₹ {{project.budget}}</p>
+
+<p class="status">{{project.status}}</p>
+
+
+
+
+
+
+<button
+class="view-details"
+[routerLink]="['/client/project', project.id]">
+View Details
+</button>
+
+</div>
+
+</div>
+
+</div>

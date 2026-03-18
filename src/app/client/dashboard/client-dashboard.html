@@ -1,0 +1,41 @@
+<div *ngIf="dashboardData" class="dashboard">
+
+  
+
+    <h2 class="welcome">
+    Welcome,{{dashboardData?.clientName}}
+  </h2>
+
+  <div class="cards">
+
+    <div class="card">
+      <h3>Total Projects</h3>
+      <p>{{ dashboardData.totalProjects }}</p>
+    </div>
+
+  
+
+    <div class="card">
+      <h3>Completed Projects</h3>
+      <p>{{ dashboardData.completedProjects }}</p>
+    </div>
+
+
+
+    
+    <div class="card">
+        <h3>Pending Projects</h3>
+        <p>{{dashboardData.pendingProjects}}</p>
+      </div>
+
+  </div>
+
+  <!-- <div style="margin-top:30px">
+
+    <button class="primary-btn" (click)="browseAdmakers()">Browse Admakers</button>
+
+    <button class="primary-btn" style="margin-left:10px" (click)="postProject()">Post Project</button>
+
+  </div> -->
+
+</div>

@@ -1,0 +1,104 @@
+<div class="auth-wrapper">
+
+  <div class="auth-card">
+
+    <h1 class="brand">
+      <span class="logo">AC</span>
+      AdConnect
+    </h1>
+
+    <p class="subtitle">Create your account</p>
+
+    <!-- NAME -->
+    <div class="input-group">
+      <input #name type="text" placeholder="Full Name">
+      <div class="error">{{ errors.name }}</div>
+    </div>
+
+    <!-- EMAIL -->
+    <div class="input-group">
+      <input #email type="email" placeholder="Email address">
+      <div class="error">{{ errors.email }}</div>
+    </div>
+
+    <!-- PHONE -->
+    <div class="input-group">
+      <input #phone type="text" placeholder="Phone Number">
+      <div class="error">{{ errors.phone }}</div>
+    </div>
+
+    <!-- PASSWORD -->
+    <div class="input-group password-group">
+
+      <input
+        #pass
+        [type]="showPassword ? 'text' : 'password'"
+        placeholder="Password"
+      >
+
+      <i
+        class="fa-solid"
+        [class.fa-eye]="showPassword"
+        [class.fa-eye-slash]="!showPassword"
+        (click)="togglePassword()"
+      ></i>
+
+    </div>
+    <div class="error">{{ errors.password }}</div>
+
+    <!-- CONFIRM PASSWORD -->
+    <div class="input-group password-group">
+
+      <input
+        #confirm
+        [type]="showConfirmPassword ? 'text' : 'password'"
+        placeholder="Confirm Password"
+      >
+
+      <i
+        class="fa-solid"
+        [class.fa-eye]="showConfirmPassword"
+        [class.fa-eye-slash]="!showConfirmPassword"
+        (click)="toggleConfirmPassword()"
+      ></i>
+
+    </div>
+    <div class="error">{{ errors.confirmPassword }}</div>
+
+    <!-- ROLE -->
+    <div class="input-group">
+      <select #role>
+        <option value="">Select Role</option>
+        <option value="Client">Client</option>
+        <option value="Admaker">Admaker</option>
+      </select>
+      <div class="error">{{ errors.role }}</div>
+    </div>
+
+    <!-- BUTTON -->
+    <button
+      (click)="register(name.value,email.value,phone.value,pass.value,confirm.value,role.value)"
+      [disabled]="loading"
+    >
+      {{ loading ? 'Creating account...' : 'Register' }}
+    </button>
+
+    <p class="switch">
+      Already have an account?
+      <a routerLink="/login">Login</a>
+    </p>
+
+    <div class="divider"></div>
+
+    <div class="footer">
+      <p class="tagline">Connecting Admakers with Perfect Opportunities</p>
+      <small>© 2026 AdConnect.All rights reserved.</small>
+    </div>
+
+    <div class="message" *ngIf="message">
+      {{ message }}
+    </div>
+
+  </div>
+
+</div>

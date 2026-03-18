@@ -1,0 +1,46 @@
+<div class="success-container">
+
+<div class="success-card">
+
+<div class="success-icon">✔</div>
+
+<h2>Payment Successful 🎉</h2>
+
+<p>Your payment has been processed successfully.</p>
+
+<div class="buttons">
+
+<button (click)="downloadInvoice()">
+Download Invoice
+</button>
+
+<button (click)="downloadReceipt()">
+Generate Receipt
+</button>
+
+<button (click)="getReceipt()">
+View Receipt
+</button>
+
+<button routerLink="/client/projects">
+Back to Projects
+</button>
+
+<div *ngIf="receipt" class="receipt-box">
+
+<h3>Receipt</h3>
+
+<p><b>Receipt No:</b> {{receipt.receiptNumber}}</p>
+<p><b>Project:</b> {{receipt.payment.projectTitle}}</p>
+<p><b>Amount:</b> ₹{{receipt.payment.amount}}</p>
+<p><b>Status:</b> {{receipt.payment.status}}</p>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+

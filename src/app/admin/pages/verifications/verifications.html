@@ -1,0 +1,65 @@
+<div class="admin-page">
+  <h2>Pending Admakers Verification</h2>
+
+  <div *ngIf="loading" class="loading">Loading pending admakers...</div>
+
+  <div *ngIf="!loading && pendingAdmakers.length === 0" class="no-data">
+    No pending admakers.
+  </div>
+
+  <table *ngIf="pendingAdmakers.length > 0" class="admin-table">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Phone</th>
+        <th>Skills / Services</th>
+        <th>Experience</th>
+        <th>Portfolio</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let admaker of pendingAdmakers">
+        <td>{{ admaker.userName }}</td>
+        <td>{{ admaker.email }}</td>
+        <td>{{ admaker.phone }}</td>
+        <td>{{ admaker.skillsServices }}</td>
+        <td>{{ admaker.experience }}</td>
+        <td>
+          <button class="btn-view" (click)="viewPortfolio(admaker.id)">View Portfolio</button>
+        </td>
+        <td>
+          <button 
+            class="btn-approve" 
+            [disabled]="actionLoadingId === admaker.id"
+            (click)="verifyAdmaker(admaker.id,'Approved')">
+            Approve
+          </button>
+          <button 
+            class="btn-reject" 
+            [disabled]="actionLoadingId === admaker.id"
+            (click)="verifyAdmaker(admaker.id,'Rejected')">
+            Reject
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <!-- Portfolio Modal -->
+  <div class="modal" *ngIf="showPortfolioModal">
+    <div class="modal-content">
+      <span class="close" (click)="closePortfolioModal()">&times;</span>
+      <h3>Portfolio</h3>
+      <div *ngIf="selectedPortfolio.length === 0">No portfolio items</div>
+      <ul *ngIf="selectedPortfolio.length > 0">
+        <li *ngFor="let p of selectedPortfolio">
+          <strong>{{ p.Title }}</strong>: {{ p.Description }}
+          <br/>
+          <a [href]="p.FilePath" target="_blank">View File</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
