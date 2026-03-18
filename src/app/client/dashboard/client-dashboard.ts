@@ -23,6 +23,7 @@ export class ClientDashboard implements OnInit {
   ) {}
 
   ngOnInit(): void {
+    
 
     // get clientId stored during login
     const clientId = localStorage.getItem("clientId");
